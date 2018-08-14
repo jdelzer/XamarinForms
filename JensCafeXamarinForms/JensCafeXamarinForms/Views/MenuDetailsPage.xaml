@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:JensCafeXamarinForms.Models;assembly=JensCafeXamarinForms.Android"
+             xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
+             x:Class="JensCafeXamarinForms.MenuDetailsPage">
+    <ContentPage.BindingContext>
+        <models:MenuItem />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="SkyBlue">
+            <StackLayout Orientation="Vertical" Margin="20, 5, 15, 5" BackgroundColor="DeepSkyBlue">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                    <Image x:Name="Image" Source="{Binding ImagePath}" HeightRequest="200" WidthRequest="200" Aspect="AspectFill"
+                           AutomationId="menuItemImage"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           MinimumWidthRequest="200"
+                           Margin="0,10,0,0"></Image>
+                </StackLayout>
+                <Label x:Name="NameLabel" Text="{Binding Name}" FontSize="Large" TextColor="Black"
+                           AutomationId="menuItemNameLabel" VerticalTextAlignment="End" VerticalOptions="EndAndExpand"
+                           HorizontalOptions="Center"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Image x:Name="likeImage" Source="likeWhite.png"
+                           MinimumWidthRequest="25"
+                           MinimumHeightRequest="25"
+                           HorizontalOptions="StartAndExpand"
+                           Margin="15,20,0,0"></Image>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" Padding="18"
+                             Spacing="10" BackgroundColor="SkyBlue" HorizontalOptions="FillAndExpand">
+                    <Grid Padding="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="195" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label x:Name="ShortDescriptionLabel"  Text="{Binding ShortDescription}" FontSize="Small" TextColor="Black"
+                               AutomationId="menuItemShortDescriptionLabel"
+                               Grid.Row="0"
+                               Grid.Column="0"></Label>
+                        <Switch x:Name="mySwitch" Grid.Row="0" Grid.Column="2" Toggled="OnToggled"
+                                AutomationId="favoritesSwitch"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Start"></Switch>
+                        <Label Text="Add to Favorites" FontSize="Micro" Grid.Row="0" Grid.Column="1"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="End"
+                               VerticalOptions="Center"></Label>
+                    </Grid>
+
+                    <Label x:Name="ItemDescriptionLabel" Text="{Binding Description}" FontSize="Small" TextColor="Black"
+                           AutomationId="menuItemDescriptionLabel"></Label>
+                    <Label x:Name="PriceLabel" Text="{Binding Price, StringFormat='{0:C}'}" FontSize="Medium" TextColor="Black"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Start"
+                           Margin="0,3,3,0"
+                           AutomationId="menuItemPriceLabel"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10" Spacing="10"  VerticalOptions="CenterAndExpand"
+                    BackgroundColor="SkyBlue">
+                    <Button x:Name="CancelButton"  Text="Cancel" Margin="0,0,20,0" AutomationId="cancelButton" ></Button>
+                    <Entry x:Name="entryAmount" WidthRequest="37" Text="1" HorizontalTextAlignment="Center"
+                           BackgroundColor="White"></Entry>
+                    <Button x:Name="OrderButton" Text="Order Now" Margin="20,0,0,0" AutomationId="orderButton"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
